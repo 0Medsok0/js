@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Timer</title>
+  </head>
+  <body>
+    <script>
+      let start = new Date(); // текущая дата
+      let end = new Date(start.getTime() + 1000 * 60 * 5); // дата через 5 минут
+      let timerId = setInterval(function () {
+        let timeLeft = end - new Date();
+        if (timeLeft <= 0) {
+          clearInterval(timerId);
+          alert("Время вышло!");
+        } else {
+          let minutes = Math.floor(timeLeft / (1000 * 60));
+          let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+          document.body.innerHTML = `Осталось: ${minutes}:${seconds}`;
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>

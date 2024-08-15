@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sea_war</title>
+  </head>
+  <body>
+    <script>
+      let location1 = 3; // хранение позиции
+      let location2 = 4;
+      let location3 = 5;
+      let guess; // текущая попытка
+      let hits = 0; // кол-во попаданий
+      let guesses = 0; //кол-во попыток
+      let isSunk = false; // потоплен корабль или нет
+
+      while (isSunk == false) {
+        guess = prompt("Готовьтесь стрелять!, (введите число 0-6):");
+        if (guess < 0 || guess > 6) {
+          alert("Введите коректное значение");
+        } else {
+          guesses = guesses + 1;
+          if (guess == location1 || guess == location2 || guess == location3) {
+            alert('Попадание!')
+            hits = hits + 1;
+            if (hits == 3) {
+              isSunk = true;
+              alert("Вы потопили мой боевой корабль!");
+            }
+          } else {
+            alert('Промах!')
+          }
+        }
+      }
+      let stats =
+        "Ты взял" +
+        guesses +
+        "догадывается потопить линкор" +
+        "это означает, что ваша точность стрельбы была " +
+        (3 / guesses);
+      alert(stats);
+    </script>
+  </body>
+</html>
