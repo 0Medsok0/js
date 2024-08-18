@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function generatePassword(length) {
+            const characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-={}[]|;':\"\\,.<>/?";
+            password = "";
+            for (let i = 0; i < length; i++) {
+              password += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return password;
+          }
+        generatePassword(8);
+
+        console.log(password);
+    </script>
+</body>
+</html>
