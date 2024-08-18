@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      date = new Date();
+      alert("Забег начался!");
+      let start = new Date(); // 1 minuts
+      // Через 1 минуту отнимаем текущую дату и время
+      let timePassed = new Date() - start;
+      let timerId = setInterval(function () {
+        timePassed = new Date() - start;
+        if (timePassed >= 1000 * 60 * 1) {
+          // 1 минута
+          clearInterval(timerId);
+          alert("Время вышло!");
+        } else {
+          let min = Math.floor((timePassed % (1000 * 60 * 60)) / (1000 * 60));
+          let sec = Math.floor((timePassed % (1000 * 60)) / 1000);
+          let milisec = Math.floor(timePassed % 1000);
+          document.body.innerHTML = `Прошло: ${min}:${sec}:${milisec}`;
+        }
+      }, 10);
+    </script>
+  </body>
+</html>
