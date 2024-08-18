@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function rps() {
+        document.write("Камень Ножницы Бумага");
+        
+        const rock = "Камень";
+        const paper = "Ножницы";
+        const scissors = "Бумага";
+        count_user = 0;
+        count_pc = 0;
+
+        let counter = 4;
+        // до 3 побед
+        question = prompt("Выбери: Камень, Ножницы, Бумага", "Камень");
+        while (count_pc <= counter || count_user <= counter) {
+          if (question == "Камень") {
+            main();
+            counter -= 1;
+          }
+          // вывести победителя
+          if (count_user == 3) {
+            console.log("Победил игрок!");
+            return count_user;
+          } else if (count_pc == 3) {
+            console.log("Победил компьютер!");
+            return count_pc;
+          }
+        }
+
+        
+
+        // Основная функция
+        function main() {
+          let list = ["Камень", "Ножницы", "Бумага"];
+          let index = Math.floor(Math.random() * list.length);
+
+          if (rock == list[index]) {
+            console.log("Ничья");
+            count_pc += 1;
+          } else if (rock == list[(index + 1) % 2]) {
+            console.log("Победа");
+            count_user += 1;
+          } else {
+            console.log("Проиграл");
+            count_pc += 1;
+          }
+
+          console.log("Компьютер выбрал: " + list[index]);
+        }
+      }
+      rps();
+    </script>
+  </body>
+</html>
