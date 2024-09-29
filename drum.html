@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Virtual Drum Kit</title>
+    <style>
+        button {
+            font-size: 24px;
+            padding: 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <button data-key="65" data-sound="clap">Clap</button>
+    <button data-key="83" data-sound="hihat">Hi-Hat</button>
+    <button data-key="68" data-sound="kick">Kick</button>
+    <button data-key="70" data-sound="openhat">Open Hat</button>
+    <button data-key="71" data-sound="boom">Boom</button>
+    <button data-key="72" data-sound="ride">Ride</button>
+    <button data-key="74" data-sound="snare">Snare</button>
+    <button data-key="75" data-sound="tom">Tom</button>
+    <button data-key="76" data-sound="tink">Tink</button>
+
+    <script>
+        // Define the drum sounds
+        const sounds = {
+            clap: 'clap.wav',
+            hihat: 'hihat.wav',
+            kick: 'kick.wav',
+            openhat: 'openhat.wav',
+            boom: 'boom.wav',
+            ride: 'ride.wav',
+            snare: 'snare.wav',
+            tom: 'tom.wav',
+            tink: 'tink.wav'
+        };
+
+        // Define a function to play a sound
+        function playSound(sound) {
+            const audio = new Audio(sounds[sound]);
+            audio.play();
+        }
+
+        // Add event listeners to the buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', () => {
+                playSound(button.dataset.sound);
+            });
+        });
+
+        // Add event listeners to the keyboard
+        document.addEventListener('keydown', event => {
+            const button = document.querySelector(`button[data-key="${event.keyCode}"]`);
+            if (button) {
+                button.click();
+            }
+        });
+    </script>
+</body>
+</html>
